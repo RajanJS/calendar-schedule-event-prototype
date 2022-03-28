@@ -11,6 +11,8 @@ import { Icon, Text, Switch } from 'react-native-elements'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import moment from 'moment'
 
+const iconColor = 'rgba(102, 102, 102, 0.9)'
+
 export default function App () {
   const [checked, setChecked] = useState(false)
   const [selectedDate, setSelectedDate] = useState(moment())
@@ -36,7 +38,7 @@ export default function App () {
             <Icon
               name='clock'
               type='feather'
-              color='#dadce0'
+              color={iconColor}
               tvParallaxProperties={undefined}
             />
             <View style={styles.dateItemContainer}>
@@ -55,7 +57,7 @@ export default function App () {
             <Icon
               name='users'
               type='feather'
-              color='#dadce0'
+              color={iconColor}
               tvParallaxProperties={undefined}
             />
             <TouchableOpacity>
@@ -68,7 +70,7 @@ export default function App () {
             <Icon
               name='location-on'
               type='evil-icons'
-              color='#dadce0'
+              color={iconColor}
               tvParallaxProperties={undefined}
             />
             <TouchableOpacity>
@@ -81,7 +83,7 @@ export default function App () {
             <Icon
               name='video'
               type='feather'
-              color='#dadce0'
+              color={iconColor}
               tvParallaxProperties={undefined}
             />
             <TouchableOpacity>
@@ -94,7 +96,7 @@ export default function App () {
             <Icon
               name='align-left'
               type='feather'
-              color='#dadce0'
+              color={iconColor}
               tvParallaxProperties={undefined}
             />
             <TouchableOpacity>
@@ -107,7 +109,7 @@ export default function App () {
             <Icon
               name='attach-file'
               type='material-icons'
-              color='#dadce0'
+              color={iconColor}
               tvParallaxProperties={undefined}
             />
             <TouchableOpacity>
@@ -154,7 +156,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingVertical: 15,
-    borderColor: '#dadce0',
+    borderColor: { iconColor },
     borderBottomWidth: 1
   },
   titleInput: {
@@ -176,7 +178,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 25,
     // borderTopWidth: 1,
-    borderColor: '#dadce0',
+    borderColor: { iconColor },
     borderBottomWidth: 1
     // backgroundColor: 'red'
   },
