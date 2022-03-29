@@ -9,6 +9,7 @@ import {
 } from 'react-native'
 import { Icon, Text, Switch } from 'react-native-elements'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import * as Localization from 'expo-localization'
 import moment from 'moment'
 
 const iconColor = 'rgba(102, 102, 102, 0.9)'
@@ -34,26 +35,65 @@ export default function App () {
           <View style={styles.titleContainer}>
             <TextInput placeholder='Add title' style={styles.titleInput} />
           </View>
-          <View style={styles.iconContainer}>
-            <Icon
-              name='clock'
-              type='feather'
-              color={iconColor}
-              tvParallaxProperties={undefined}
-            />
-            <View style={styles.dateItemContainer}>
-              <View>
+          <View style={styles.dateContainerWrapper}>
+            <View style={styles.dateItemWrapper}>
+              <Icon
+                name='clock'
+                type='feather'
+                color={iconColor}
+                tvParallaxProperties={undefined}
+              />
+              <View style={styles.dateItemContainer}>
                 <Text style={styles.normalTxt}>All-day</Text>
+                <View style={styles.dateItemRight}>
+                  <Switch
+                    value={checked}
+                    onValueChange={value => setChecked(value)}
+                  />
+                </View>
               </View>
-              <View style={styles.dateItemRight}>
-                <Switch
-                  value={checked}
-                  onValueChange={value => setChecked(value)}
-                />
+            </View>
+            <View style={styles.dateTimeContainer}>
+              <View style={styles.dateSelectContainer}>
+                <Text style={styles.normalTxt}>{moment().format('llll')}</Text>
+                <View style={styles.dateItemRight}>
+                  <Text style={styles.normalTxt}>{moment().format('LT')}</Text>
+                </View>
+              </View>
+            </View>
+            <View style={styles.dateTimeContainer}>
+              <View style={styles.dateSelectContainer}>
+                <Text style={styles.normalTxt}>{moment().format('llll')}</Text>
+                <View style={styles.dateItemRight}>
+                  <Text style={styles.normalTxt}>{moment().format('LT')}</Text>
+                </View>
+              </View>
+            </View>
+
+            <View style={styles.dateItemWrapper}>
+              <Icon
+                name='globe'
+                type='entypo'
+                color={iconColor}
+                tvParallaxProperties={undefined}
+              />
+              <View style={styles.dateItemContainer}>
+                <Text style={styles.normalTxt}>{Localization.timezone}</Text>
+              </View>
+            </View>
+            <View style={[styles.dateItemWrapper, { paddingBottom: 0 }]}>
+              <Icon
+                name='reload1'
+                type='ant-design'
+                color={iconColor}
+                tvParallaxProperties={undefined}
+              />
+              <View style={styles.dateItemContainer}>
+                <Text style={styles.normalTxt}>Does not repeat</Text>
               </View>
             </View>
           </View>
-          <View style={styles.iconContainer}>
+          <View style={styles.listItemContainer}>
             <Icon
               name='users'
               type='feather'
@@ -66,7 +106,7 @@ export default function App () {
               </Text>
             </TouchableOpacity>
           </View>
-          <View style={styles.iconContainer}>
+          <View style={styles.listItemContainer}>
             <Icon
               name='location-on'
               type='evil-icons'
@@ -79,7 +119,7 @@ export default function App () {
               </Text>
             </TouchableOpacity>
           </View>
-          <View style={styles.iconContainer}>
+          <View style={styles.listItemContainer}>
             <Icon
               name='video'
               type='feather'
@@ -92,7 +132,7 @@ export default function App () {
               </Text>
             </TouchableOpacity>
           </View>
-          <View style={styles.iconContainer}>
+          <View style={styles.listItemContainer}>
             <Icon
               name='align-left'
               type='feather'
@@ -105,7 +145,7 @@ export default function App () {
               </Text>
             </TouchableOpacity>
           </View>
-          <View style={styles.iconContainer}>
+          <View style={styles.listItemContainer}>
             <Icon
               name='attach-file'
               type='material-icons'
@@ -156,7 +196,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingVertical: 15,
-    borderColor: { iconColor },
+    borderColor: '#dadce0',
     borderBottomWidth: 1
   },
   titleInput: {
@@ -169,18 +209,43 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between'
   },
+  dateSelectContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    marginLeft: 43,
+    alignItems: 'center',
+    justifyContent: 'space-between'
+  },
   dateItemRight: {
     marginLeft: 10
   },
-  iconContainer: {
+  dateContainerWrapper: {
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center',
+    borderColor: '#dadce0',
+    borderBottomWidth: 1,
+    paddingVertical: 25
+  },
+  dateItemWrapper: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingBottom: 15
+  },
+  dateTimeContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingBottom: 18
+  },
+  listItemContainer: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     paddingVertical: 25,
-    // borderTopWidth: 1,
-    borderColor: { iconColor },
+    borderColor: '#dadce0',
     borderBottomWidth: 1
-    // backgroundColor: 'red'
   },
   btnTextItem: {
     paddingHorizontal: 10,
