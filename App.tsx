@@ -31,7 +31,7 @@ export default function App () {
             <Text style={styles.btnTxt}>Save</Text>
           </TouchableOpacity>
         </View>
-        <ScrollView>
+        <ScrollView contentContainerStyle={{ padding: 12 }}>
           <View style={styles.titleContainer}>
             <TextInput placeholder='Add title' style={styles.titleInput} />
           </View>
@@ -56,31 +56,40 @@ export default function App () {
             <View style={styles.dateTimeContainer}>
               <View style={styles.dateSelectContainer}>
                 <Text style={styles.normalTxt}>{moment().format('llll')}</Text>
-                <View style={styles.dateItemRight}>
-                  <Text style={styles.normalTxt}>{moment().format('LT')}</Text>
-                </View>
+                {!checked && (
+                  <View style={styles.dateItemRight}>
+                    <Text style={styles.normalTxt}>
+                      {moment().format('LT')}
+                    </Text>
+                  </View>
+                )}
               </View>
             </View>
             <View style={styles.dateTimeContainer}>
               <View style={styles.dateSelectContainer}>
                 <Text style={styles.normalTxt}>{moment().format('llll')}</Text>
-                <View style={styles.dateItemRight}>
-                  <Text style={styles.normalTxt}>{moment().format('LT')}</Text>
+                {!checked && (
+                  <View style={styles.dateItemRight}>
+                    <Text style={styles.normalTxt}>
+                      {moment().format('LT')}
+                    </Text>
+                  </View>
+                )}
+              </View>
+            </View>
+            {!checked && (
+              <View style={styles.dateItemWrapper}>
+                <Icon
+                  name='globe'
+                  type='entypo'
+                  color={iconColor}
+                  tvParallaxProperties={undefined}
+                />
+                <View style={styles.dateItemContainer}>
+                  <Text style={styles.normalTxt}>{Localization.timezone}</Text>
                 </View>
               </View>
-            </View>
-
-            <View style={styles.dateItemWrapper}>
-              <Icon
-                name='globe'
-                type='entypo'
-                color={iconColor}
-                tvParallaxProperties={undefined}
-              />
-              <View style={styles.dateItemContainer}>
-                <Text style={styles.normalTxt}>{Localization.timezone}</Text>
-              </View>
-            </View>
+            )}
             <View style={[styles.dateItemWrapper, { paddingBottom: 0 }]}>
               <Icon
                 name='reload1'
@@ -176,7 +185,8 @@ const styles = StyleSheet.create({
   buttonContainer: {
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
-    marginTop: 10
+    marginTop: 10,
+    marginRight: 4
   },
   btnStyle: {
     borderWidth: 1,
@@ -217,7 +227,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between'
   },
   dateItemRight: {
-    marginLeft: 10
+    marginLeft: 12,
+    marginRight: 6
   },
   dateContainerWrapper: {
     flex: 1,
